@@ -8,7 +8,7 @@ import schedule, threading
 start_pc = 0
 picture_name = ''
 
-
+### set your registery to autorun after restart pc!
 def become_persistent():
 
     try:
@@ -28,7 +28,9 @@ def become_persistent():
         messagebox.showerror('error', 'please run with administrator permission!')
         # sys.exit()
 
-
+""" after setup pc this mechanism run every minute and when success to connect api and
+    get picture run every 15 miniute again and again
+"""
 def schedule_day():
     schedule.every(15).minutes.do(background_changer)
     global start_pc
@@ -67,7 +69,7 @@ def download(url):
         start_pc = 0
         pass
 
-
+### change your wall in windows:)
 def background_changer():
     global path
     path = os.path.join(os.path.expanduser('~'), 'Pictures', 'Bing_WallPaper')
@@ -86,7 +88,7 @@ def background_changer():
     except Exception:
         pass
 
-
+# check file path
 def file_exist():
     if not os.path.exists(path=path):
         os.mkdir(path=path)
